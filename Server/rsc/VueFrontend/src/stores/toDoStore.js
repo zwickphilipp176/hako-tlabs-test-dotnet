@@ -3,15 +3,15 @@
 export const useToDoStore = defineStore("toDoStore", {
   state: () => ({
     tasks: [],
+    searchTerm: "",
   }),
   actions: {
-    fetchTasks() {
+    async fetchTasks() {
       // get tasks from localhost:5000/api/tasks
-      fetch("http://localhost:5000/api/tasks")
-        .then((response) => response.json())
-        .then((data) => {
-          this.tasks = data;
-        });
+      const searchExpression = this.searchTerm?.length > 0 ? `Filter.SearchTerm=${this.searchTerm}` : "";
+      const response = await fetch(`http://localhost:5000/api/tasks?${searchExpression}`);
+      const data = await response.json();
+      this.tasks = data.items;
     },
     async addTask(task) {
       await fetch("http://localhost:5000/api/tasks", {
@@ -21,6 +21,7 @@ export const useToDoStore = defineStore("toDoStore", {
         },
         body: JSON.stringify(task),
       }).finally(() => {
+        this.searchTerm = "";
         this.fetchTasks();
       });
     },
@@ -33,6 +34,7 @@ export const useToDoStore = defineStore("toDoStore", {
         },
         body: JSON.stringify(task),
       }).finally(() => {
+        this.searchTerm = "";
         this.fetchTasks();
       });
     },
@@ -41,6 +43,7 @@ export const useToDoStore = defineStore("toDoStore", {
       await fetch(`http://localhost:5000/api/tasks/${task.id}`, {
         method: "DELETE",
       }).finally(() => {
+        this.searchTerm = "";
         this.fetchTasks();
       });
     },

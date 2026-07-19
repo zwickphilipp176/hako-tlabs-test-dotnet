@@ -4,6 +4,12 @@
       <input class="createInput" v-model="newTask" @keyup.enter="addTask" placeholder="Add a new todo" />
       <button class="createButton" @click="addTask">Add</button>
     </div>
+
+    <div class="searchToDoItemContainer">
+      <input class="searchInput" v-model="searchTerm" @keyup.enter="searchTasks" placeholder="Search tasks..." />
+      <button class="searchButton" @click="searchTasks">Search</button>
+    </div>
+
     <div class="toDoListContainer">
       <div v-for="task in todos" :key="task.id">
         <div class="toDoRow">
@@ -29,6 +35,13 @@ export default defineComponent({
 
     await todoStore.fetchTasks();
 
+    const searchTerm = ref("");
+
+    const searchTasks = () => {      
+      todoStore.searchTerm = searchTerm.value.trim();
+      todoStore.fetchTasks();
+    };
+
     const newTask = ref("");
 
     const addTask = () => {
@@ -52,6 +65,8 @@ export default defineComponent({
       addTask,
       deleteTask,
       updateTask,
+      searchTerm,
+      searchTasks,
     };
   },
 });
@@ -66,13 +81,14 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
-.createToDoItemContainer {
+.createToDoItemContainer, .searchToDoItemContainer {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .formContainer {
@@ -83,10 +99,10 @@ export default defineComponent({
   width: 400px;
 }
 
-.createButton {
+.createButton, .searchButton, .deleteButton, .updateButton {
   margin-right: auto;
   margin-left: 0;
-  width: 50px;
+  width: 60px;
 }
 
 .toDoRow {
@@ -94,19 +110,7 @@ export default defineComponent({
   gap: 10px;
 }
 
-.deleteButton {
-  margin-right: auto;
-  margin-left: 0;
-  width: 50px;
-}
-
-.updateButton {
-  margin-right: auto;
-  margin-left: 0;
-  width: 60px;
-}
-
-.createInput {
+.createInput, .searchInput {
   flex-grow: 1;
 }
 
