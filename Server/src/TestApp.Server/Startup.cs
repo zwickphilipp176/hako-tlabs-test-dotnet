@@ -27,7 +27,13 @@ namespace TestApp.Server
             // Add controllers
             services.AddControllers(options =>
             {
+                options.Filters.Add<RequestLoggingFilter>();
                 options.Filters.Add<ValidationFilter>();
+            });
+
+            services.AddLogging(cfg =>
+            {
+                cfg.AddConsole(); ;
             });
 
             // FluentValidation validators
