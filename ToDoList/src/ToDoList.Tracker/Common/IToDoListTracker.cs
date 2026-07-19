@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TestApp.ToDoList.Application.Model;
 using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 
@@ -34,8 +35,9 @@ namespace TestApp.ToDoList.Application.Common
         /// <summary>
         /// Gets all to-do items.
         /// </summary>
+        /// <param name="queryOptions"></param>
         /// <returns></returns>
-        Task<IEnumerable<ToDoItem>> GetAllItemsAsync();
+        Task<PaginatedList<ToDoItem>> GetAllItemsAsync(GetToDoItemsQuery queryOptions);
 
         /// <summary>
         /// Edits a to-do item.

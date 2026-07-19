@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestApp.ToDoList.Application.Common;
+using TestApp.ToDoList.Application.Model;
+using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 using TestApp.ToDoList.Infrastructure.Store;
 
@@ -31,14 +33,34 @@ namespace TestApp.ToDoList.Infrastructure.Repositories
                     new ToDoItem { Title = "Pay Bills"},
                     new ToDoItem { Title = "Clean the House", IsCompleted = true}]);
 
-               context.SaveChanges();
+                context.SaveChanges();
             }
         }
 
         /// <inheritdoc/>
-        public async Task<ICollection<ToDoItem>> GetAllItemsAsync()
+        public async Task<PaginatedList<ToDoItem>> GetAllItemsAsync(GetToDoItemsQuery queryOptions)
         {
-            return await context.ToDoItems.ToListAsync();
+            var query = context.ToDoItems.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(queryOptions.SearchTerm))
+                query = query.Where(x => x.Title.Contains(queryOptions.SearchTerm));
+
+            var count = query.Count();
+
+            query = queryOptions.SortBy switch
+            {
+                SortBy.Title => queryOptions.DecendingOrder ? query.OrderByDescending(x => x.Title) : query.OrderBy(x => x.Title),
+                SortBy.CreatedAt => queryOptions.DecendingOrder ? query.OrderByDescending(x => x.CreatedAt) : query.OrderBy(x => x.CreatedAt),
+                _ => query
+            };
+
+            if (queryOptions.PageSize.HasValue && queryOptions.PageNumber.HasValue)
+            {
+                query = query.Skip((queryOptions.PageNumber.Value - 1) * queryOptions.PageSize.Value)
+                             .Take(queryOptions.PageSize.Value);
+            }
+
+            return new PaginatedList<ToDoItem>(await query.ToListAsync(), count);
         }
 
         /// <inheritdoc/>

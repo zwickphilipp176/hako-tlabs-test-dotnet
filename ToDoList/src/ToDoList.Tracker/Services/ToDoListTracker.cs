@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestApp.ToDoList.Application.Common;
+using TestApp.ToDoList.Application.Model;
 using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 
@@ -48,10 +49,10 @@ namespace TestApp.ToDoList.Application.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<ToDoItem>> GetAllItemsAsync()
+        public async Task<PaginatedList<ToDoItem>> GetAllItemsAsync(GetToDoItemsQuery queryOptions)
         {
             // Implementation for getting all to-do items
-            return await repository.GetAllItemsAsync();
+            return await repository.GetAllItemsAsync(queryOptions);
         }
 
         /// <inheritdoc/>

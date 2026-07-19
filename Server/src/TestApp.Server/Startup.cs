@@ -29,6 +29,10 @@ namespace TestApp.Server
             {
                 options.Filters.Add<RequestLoggingFilter>();
                 options.Filters.Add<ValidationFilter>();
+            })
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
             });
 
             services.AddLogging(cfg =>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestApp.ToDoList.Application.Common;
+using TestApp.ToDoList.Application.Model;
 using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 
@@ -17,10 +18,10 @@ namespace TestApp.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IList<ToDoItem>>> GetTasks()
+        public async Task<ActionResult<PaginatedList<ToDoItem>>> GetTasks([FromQuery] GetToDoItemsQuery queryOptions)
         {
-            var tasks = await toDoListTracker.GetAllItemsAsync();
-            return tasks.ToList();
+            var tasks = await toDoListTracker.GetAllItemsAsync(queryOptions);
+            return tasks;
         }
 
         [HttpPost]
