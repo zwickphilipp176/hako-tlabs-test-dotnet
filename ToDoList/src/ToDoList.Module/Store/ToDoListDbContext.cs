@@ -14,6 +14,7 @@ namespace TestApp.ToDoList.Store
     {
       optionsBuilder.UseInMemoryDatabase(databaseName: "InMemoryTodoTasksDb");
     }
+
     /// <summary>
     /// DB Set for To-Do Items
     /// </summary>

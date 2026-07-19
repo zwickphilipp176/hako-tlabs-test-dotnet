@@ -14,6 +14,7 @@ namespace TestApp.Server
     {
       this.configuration = configuration;
     }
+
     public void ConfigureServices(IServiceCollection services)
     {
       // Add DB
@@ -24,7 +25,7 @@ namespace TestApp.Server
 
       // Configure app services
       services.AddScoped<IToDoListTracker, ToDoListTracker>();
-      services.AddSingleton<IToDoItemsRepository, ToDoItemsRepository>();
+      services.AddScoped<IToDoItemsRepository, ToDoItemsRepository>();
       services.AddScoped<ToDoListEntityModel>();
 
       services.AddCors(options =>

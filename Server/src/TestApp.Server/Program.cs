@@ -12,7 +12,6 @@
         .ConfigureWebHostDefaults(builder =>
         {
           builder.UseStartup<Startup>();
-          builder.UseUrls("http://*:5000");
         });
 
     public static void AddAppConfiguration(
