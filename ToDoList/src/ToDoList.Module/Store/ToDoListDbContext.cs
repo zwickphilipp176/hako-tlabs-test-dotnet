@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestApp.ToDoList.Entity;
+using TestApp.ToDoList.Domain.Entity;
 
-namespace TestApp.ToDoList.Store
+namespace TestApp.ToDoList.Infrastructure.Store
 {
   /// <summary>
   /// DbContext for the ToDo list.

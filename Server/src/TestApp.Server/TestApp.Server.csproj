@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <AssemblyName>TestApp.Server</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <OutputType>Exe</OutputType>
@@ -18,7 +19,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="../../../ToDoList/src/ToDoList.Tracker/ToDoList.Tracker.csproj" />
-    <ProjectReference Include="../../../ToDoList/src/ToDoList.Module/ToDoList.Module.csproj" />
+    <ProjectReference Include="..\..\..\ToDoList\src\ToDoList.Tracker\ToDoList.Application.csproj" />
+    <ProjectReference Include="..\..\..\ToDoList\src\ToDoList.Module\ToDoList.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>TestApp.ToDoList.Application</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <OutputType>Library</OutputType>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <DefaultItemExcludesInProjectFolder>$(DefaultItemExcludesInProjectFolder);packages.lock.json</DefaultItemExcludesInProjectFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == '' Or '$(Configuration)' == 'Debug' ">
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ToDoList.Domain\ToDoList.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
