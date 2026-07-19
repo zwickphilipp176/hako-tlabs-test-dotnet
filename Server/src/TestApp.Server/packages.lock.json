@@ -39,6 +39,14 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "9.0.3"
         }
       },
+      "Castle.Core": {
+        "type": "Transitive",
+        "resolved": "5.2.1",
+        "contentHash": "wHARzQA695jwwKreOzNsq54KiGqKP38tv8hi8e2FXDEC/sA6BtrX90tVPDkOfVu13PbEzr00TCV8coikl+D1Iw==",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        }
+      },
       "Humanizer.Core": {
         "type": "Transitive",
         "resolved": "2.14.1",
@@ -136,6 +144,15 @@
         "resolved": "8.0.29",
         "contentHash": "LLVpKlP2bTE+Zbbq63pAT3ObaIiqEsecOD5jwIAV0OAJ9hZFzdAMElzcT/jnaFYIYFu37HzCUwtFQv0lujD7bg==",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.29"
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Proxies": {
+        "type": "Transitive",
+        "resolved": "8.0.29",
+        "contentHash": "NgBSXYt28bxPvvvOHK6kPt4zLiiHLgxugrsMmEugRgr3ISyK1/Kvt4hla93uHiDB4zLs9npRqpoEvV55SK6NMA==",
+        "dependencies": {
+          "Castle.Core": "5.2.1",
           "Microsoft.EntityFrameworkCore": "8.0.29"
         }
       },
@@ -326,6 +343,11 @@
           "System.Composition.Runtime": "6.0.0"
         }
       },
+      "System.Diagnostics.EventLog": {
+        "type": "Transitive",
+        "resolved": "6.0.0",
+        "contentHash": "lcyUiXTsETK2ALsZrX+nWuHSIQeazhqPphLfaRxzdGaG93+0kELqpgEHtwWOlQe7+jSFnKwaCAgL4kjeZCQJnw=="
+      },
       "System.IO.Pipelines": {
         "type": "Transitive",
         "resolved": "6.0.3",
@@ -373,6 +395,7 @@
           "Microsoft.EntityFrameworkCore": "[8.0.*, )",
           "Microsoft.EntityFrameworkCore.Design": "[8.0.*, )",
           "Microsoft.EntityFrameworkCore.InMemory": "[8.0.*, )",
+          "Microsoft.EntityFrameworkCore.Proxies": "[8.0.*, )",
           "TestApp.ToDoList.Application": "[0.0.1, )"
         }
       }

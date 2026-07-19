@@ -16,28 +16,28 @@ namespace TestApp.ToDoList.Application.Common
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        Task<ToDoItem> AddItemAsync(CreateToDoItem item);
+        Task<ToDoItemDto> AddItemAsync(CreateToDoItem item);
 
         /// <summary>
         /// Removes a to-do item.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>the deleted item or null if none found</returns>
-        Task<ToDoItem> RemoveItemAsync(int id);
+        Task<ToDoItemDto> DeleteItemAsync(int id);
 
         /// <summary>
         /// Gets a to-do item by its Id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<ToDoItem> GetItemAsync(int id);
+        Task<ToDoItemDto> GetItemAsync(int id);
 
         /// <summary>
         /// Gets all to-do items.
         /// </summary>
         /// <param name="queryOptions"></param>
         /// <returns></returns>
-        Task<PaginatedList<ToDoItem>> GetAllItemsAsync(GetToDoItemsQuery queryOptions);
+        Task<PaginatedList<ToDoItemDto>> GetAllItemsAsync(GetToDoItemsQuery queryOptions);
 
         /// <summary>
         /// Edits a to-do item.
@@ -45,6 +45,22 @@ namespace TestApp.ToDoList.Application.Common
         /// <param name="id"></param>
         /// <param name="item"></param>
         /// <returns></returns>
-        Task<ToDoItem> EditItemAsync(int id, EditToDoItem item);
+        Task<ToDoItemDto> EditItemAsync(int id, EditToDoItem item);
+
+        /// <summary>
+        /// Adds a tag to a to-do item.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tagValue"></param>
+        /// <returns></returns>
+        Task<ToDoItemDto> AddTagToItemAsync(int id, string tagValue);
+
+        /// <summary>
+        /// Deletes a tag from a to-do item.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tagValue"></param>
+        /// <returns></returns>
+        Task<ToDoItemDto> DeleteTagFromItemAsync(int id, string tagValue);
     }
 }

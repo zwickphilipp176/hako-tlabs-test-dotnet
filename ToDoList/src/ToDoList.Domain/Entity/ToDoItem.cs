@@ -1,34 +1,33 @@
-﻿using System;
-
-namespace TestApp.ToDoList.Domain.Entity
+﻿namespace TestApp.ToDoList.Domain.Entity
 {
-  /// <summary>
-  /// Entity of the ToDo item
-  /// </summary>
-  public class ToDoItem
-  {
     /// <summary>
-    /// Unique Id of the item (autoincrement)
+    /// Entity of the ToDo item
     /// </summary>
-    public int Id { get; set; }
-    /// <summary>
-    /// Title of the to-do item.
-    /// </summary>
-    public string Title { get; set; }
+    public class ToDoItem : EntityBase
+    {
+        /// <summary>
+        /// Title of the to-do item.
+        /// </summary>
+        public required string Title { get; set; }
 
-    /// <summary>
-    /// IsCompleted flag of the to-do item.
-    /// </summary>
-    public bool IsCompleted { get; set; }
+        /// <summary>
+        /// IsCompleted flag of the to-do item.
+        /// </summary>
+        public bool IsCompleted { get; set; }
 
-    /// <summary>
-    /// Creation date of the to-do item.
-    /// </summary>
-    public DateTime CreatedAt { get; set; }
+        /// <summary>
+        /// Creation date of the to-do item.
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
 
-    /// <summary>
-    /// Completion date of the to-do item.
-    /// </summary>
-    public DateTime? CompletedAt { get; set; }
-  }
+        /// <summary>
+        /// Completion date of the to-do item.
+        /// </summary>
+        public DateTime? CompletedAt { get; set; }
+
+        /// <summary>
+        /// Collection of tags associated with the to-do item.
+        /// </summary>
+        public virtual ICollection<ItemTag> Tags { get; set; } = new List<ItemTag>();
+    }
 }

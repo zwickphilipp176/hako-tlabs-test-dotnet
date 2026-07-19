@@ -36,6 +36,24 @@
           "Microsoft.EntityFrameworkCore": "8.0.29"
         }
       },
+      "Microsoft.EntityFrameworkCore.Proxies": {
+        "type": "Direct",
+        "requested": "[8.0.*, )",
+        "resolved": "8.0.29",
+        "contentHash": "NgBSXYt28bxPvvvOHK6kPt4zLiiHLgxugrsMmEugRgr3ISyK1/Kvt4hla93uHiDB4zLs9npRqpoEvV55SK6NMA==",
+        "dependencies": {
+          "Castle.Core": "5.2.1",
+          "Microsoft.EntityFrameworkCore": "8.0.29"
+        }
+      },
+      "Castle.Core": {
+        "type": "Transitive",
+        "resolved": "5.2.1",
+        "contentHash": "wHARzQA695jwwKreOzNsq54KiGqKP38tv8hi8e2FXDEC/sA6BtrX90tVPDkOfVu13PbEzr00TCV8coikl+D1Iw==",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        }
+      },
       "FluentValidation": {
         "type": "Transitive",
         "resolved": "12.1.1",
@@ -265,6 +283,11 @@
           "System.Composition.Hosting": "6.0.0",
           "System.Composition.Runtime": "6.0.0"
         }
+      },
+      "System.Diagnostics.EventLog": {
+        "type": "Transitive",
+        "resolved": "6.0.0",
+        "contentHash": "lcyUiXTsETK2ALsZrX+nWuHSIQeazhqPphLfaRxzdGaG93+0kELqpgEHtwWOlQe7+jSFnKwaCAgL4kjeZCQJnw=="
       },
       "System.IO.Pipelines": {
         "type": "Transitive",

@@ -46,6 +46,7 @@ namespace TestApp.Server
             // Configure app services
             services.AddScoped<IToDoListTracker, ToDoListTracker>();
             services.AddScoped<IToDoItemsRepository, ToDoItemsRepository>();
+            services.AddScoped<IItemTagsRepository, ItemTagsRepository>();
 
             services.AddCors(options =>
             {
