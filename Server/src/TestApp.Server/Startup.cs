@@ -53,7 +53,8 @@ namespace TestApp.Server
                 options.AddDefaultPolicy(p =>
                 {
                     p.AllowAnyOrigin()
-                      .AllowAnyHeader();
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
                 });
             });
 
