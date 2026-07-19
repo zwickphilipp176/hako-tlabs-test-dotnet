@@ -17,7 +17,7 @@ namespace TestApp.ToDoList.Infrastructure.Repositories
         /// <summary>
         /// Context for the ToDoList database, used for database operations.
         /// </summary>
-        protected readonly ToDoListDbContext context;
+        protected readonly IToDoListDbContext context;
 
         /// <summary>
         /// DbSet for the entity type T, used for database operations.
@@ -29,7 +29,7 @@ namespace TestApp.ToDoList.Infrastructure.Repositories
         /// </summary>
         /// <param name="context"></param>
         /// <param name="dbSet"></param>
-        public RepositoryBase(ToDoListDbContext context, DbSet<T> dbSet)
+        public RepositoryBase(IToDoListDbContext context, DbSet<T> dbSet)
         {
             this.context = context;
             this.dbSet = dbSet;

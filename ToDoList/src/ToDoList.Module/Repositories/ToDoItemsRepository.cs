@@ -18,45 +18,9 @@ namespace TestApp.ToDoList.Infrastructure.Repositories
         /// Initializes a new instance of the <see cref="ToDoItemsRepository"/> class with the specified database context.
         /// </summary>
         /// <param name="context"></param>
-        public ToDoItemsRepository(ToDoListDbContext context)
+        public ToDoItemsRepository(IToDoListDbContext context)
             : base(context, context.ToDoItems)
         {
-            SeedInitialData();
-        }
-
-        private void SeedInitialData()
-        {
-            if (!context.ToDoItems.Any())
-            {
-                context.ToDoItems.AddRange(new[]
-                {
-                    new ToDoItem
-                    {
-                        Title = "Laundry",
-                        Tags = [
-                            new ItemTag { Value = "Household" }
-                        ]
-                    },
-                    new ToDoItem 
-                    { 
-                        Title = "Grocery Shopping", 
-                        IsCompleted = true,
-                        Tags = [
-                            new ItemTag { Value = "Finance" }                            
-                        ]
-                    },
-                    new ToDoItem
-                    {
-                        Title = "Pay Bills",
-                        Tags = [
-                            new ItemTag { Value = "Finance" },
-                            new ItemTag { Value = "Urgent" }
-                        ]
-                    },
-                    new ToDoItem { Title = "Clean the House", IsCompleted = true}
-                });
-                context.SaveChanges();
-            }
         }
 
         /// <inheritdoc/>

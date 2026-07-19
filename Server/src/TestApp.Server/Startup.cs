@@ -22,7 +22,7 @@ namespace TestApp.Server
             services.AddSingleton(configuration);
 
             // Add DB
-            services.AddDbContext<ToDoListDbContext>();
+            services.AddDbContext<IToDoListDbContext, ToDoListDbContext>();
 
             // Add controllers
             services.AddControllers(options =>
@@ -62,14 +62,14 @@ namespace TestApp.Server
             services.AddSwaggerGen();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider svcProv)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // Enable Swagger in all environments
             app.UseSwagger();
             app.UseSwaggerUI();
 
-            var appLifetime = svcProv.GetRequiredService<IHostApplicationLifetime>();
-            appLifetime.ApplicationStarted.Register(OnApplicationStarted);
+            var appLifetime = app.ApplicationServices.GetRequiredService<IHostApplicationLifetime>();
+            appLifetime.ApplicationStarted.Register(() => OnApplicationStarted(app.ApplicationServices));
 
             app.UseRouting();
             app.UseAuthorization();
@@ -82,9 +82,11 @@ namespace TestApp.Server
             });
         }
 
-        private void OnApplicationStarted()
+        private void OnApplicationStarted(IServiceProvider svcProv)
         {
-            // Do nothing
+            using var scope = svcProv.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<ToDoListDbContext>();
+            ToDoListDbSeeder.Seed(dbContext);
         }
 
     }

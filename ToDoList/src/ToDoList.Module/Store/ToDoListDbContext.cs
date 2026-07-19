@@ -6,7 +6,7 @@ namespace TestApp.ToDoList.Infrastructure.Store
     /// <summary>
     /// DbContext for the ToDo list.
     /// </summary>
-    public class ToDoListDbContext : DbContext
+    public class ToDoListDbContext : DbContext, IToDoListDbContext
     {
         /// <inheritdoc/>
         protected override void OnConfiguring
@@ -31,9 +31,9 @@ namespace TestApp.ToDoList.Infrastructure.Store
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("NOCASE");
-            
+
             base.OnModelCreating(modelBuilder);
-            
+
             var entityModel = new ToDoListEntityModel();
             entityModel.ConfigureModel(modelBuilder);
         }

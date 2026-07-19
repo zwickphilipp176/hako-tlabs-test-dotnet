@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.7.11925.98 stable
+VisualStudioVersion = 18.7.11925.98
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{DAD03CFC-D5FA-AC94-41C7-9ABAB326F09E}"
 EndProject
@@ -17,6 +17,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Application", "ToDoList\src\ToDoList.Tracker\ToDoList.Application.csproj", "{387F5C2C-30FA-A914-3D1E-4304E3983080}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Domain", "ToDoList\src\ToDoList.Domain\ToDoList.Domain.csproj", "{5934227C-13E8-4268-92CD-1C6DA18B8BD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{31268A65-F394-41FA-94B6-D22363A4A4E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Application.Tests", "ToDoList\tests\ToDoList.Application.Tests\ToDoList.Application.Tests.csproj", "{10BDFB96-4B49-4DF4-991A-ABB34F430276}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +44,10 @@ Global
 		{5934227C-13E8-4268-92CD-1C6DA18B8BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5934227C-13E8-4268-92CD-1C6DA18B8BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5934227C-13E8-4268-92CD-1C6DA18B8BD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BDFB96-4B49-4DF4-991A-ABB34F430276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BDFB96-4B49-4DF4-991A-ABB34F430276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BDFB96-4B49-4DF4-991A-ABB34F430276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BDFB96-4B49-4DF4-991A-ABB34F430276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,8 @@ Global
 		{9E3290D3-D4B2-5430-ACBE-9A88E8822CCA} = {D71E1CDD-8314-D177-8810-E7464CC0052C}
 		{387F5C2C-30FA-A914-3D1E-4304E3983080} = {D71E1CDD-8314-D177-8810-E7464CC0052C}
 		{5934227C-13E8-4268-92CD-1C6DA18B8BD2} = {D71E1CDD-8314-D177-8810-E7464CC0052C}
+		{31268A65-F394-41FA-94B6-D22363A4A4E6} = {8611CEBD-4683-B532-4E66-174D9C1D9B39}
+		{10BDFB96-4B49-4DF4-991A-ABB34F430276} = {31268A65-F394-41FA-94B6-D22363A4A4E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BB827B1-8394-4387-9F79-C821EF54B35D}

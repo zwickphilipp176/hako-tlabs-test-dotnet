@@ -15,7 +15,7 @@ namespace TestApp.ToDoList.Infrastructure.Repositories
         /// Initializes a new instance of the <see cref="ItemTagsRepository"/> class.
         /// </summary>
         /// <param name="context"></param>
-        public ItemTagsRepository(ToDoListDbContext context)
+        public ItemTagsRepository(IToDoListDbContext context)
             :base(context, context.ItemTags)
         {
 
