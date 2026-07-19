@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestApp.ToDoList.Application.Common;
-using TestApp.ToDoList.Application.Model;
+using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 
 namespace TestApp.ToDoList.Application.Services
@@ -59,7 +59,7 @@ namespace TestApp.ToDoList.Application.Services
         {
             var existingItem = await repository.GetItemByIdAsync(id);
 
-            if (null == item)
+            if (null == existingItem)
                 return null;
 
             existingItem.Title = item.Title;

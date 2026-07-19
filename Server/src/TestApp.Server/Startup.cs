@@ -1,4 +1,7 @@
+using FluentValidation;
+using TestApp.Server.Filters;
 using TestApp.ToDoList.Application.Common;
+using TestApp.ToDoList.Application.Model.TodoItem.Validation;
 using TestApp.ToDoList.Application.Services;
 using TestApp.ToDoList.Infrastructure.Repositories;
 using TestApp.ToDoList.Infrastructure.Store;
@@ -22,12 +25,17 @@ namespace TestApp.Server
             services.AddDbContext<ToDoListDbContext>();
 
             // Add controllers
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<ValidationFilter>();
+            });
+
+            // FluentValidation validators
+            services.AddValidatorsFromAssemblyContaining<CreateToDoItemValidator>();
 
             // Configure app services
             services.AddScoped<IToDoListTracker, ToDoListTracker>();
             services.AddScoped<IToDoItemsRepository, ToDoItemsRepository>();
-            //services.AddScoped<ToDoListEntityModel>();
 
             services.AddCors(options =>
             {

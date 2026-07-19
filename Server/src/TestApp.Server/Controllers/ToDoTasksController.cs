@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestApp.ToDoList.Application.Common;
-using TestApp.ToDoList.Application.Model;
+using TestApp.ToDoList.Application.Model.TodoItem;
 using TestApp.ToDoList.Domain.Entity;
 
 namespace TestApp.Server.Controllers

@@ -1,4 +1,4 @@
-﻿namespace TestApp.ToDoList.Application.Model
+﻿namespace TestApp.ToDoList.Application.Model.TodoItem
 {
     /// <summary>
     /// Represents a request to edit a to-do item.
